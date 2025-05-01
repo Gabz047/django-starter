@@ -27,12 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
-CSRF_TRUSTED_ORIGINS = [ 'https://*' ]
+CSRF_TRUSTED_ORIGINS = [ 'https://*', 'http://localhost:8000',
+    'http://localhost:8001', ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
 
     # My apps
+    'a_rtchat',
     'a_home',
     'a_users',
 ]
@@ -87,9 +90,23 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'a_core.wsgi.application'
+# WSGI_APPLICATION = 'a_core.wsgi.application'
+ASGI_APPLICATION = 'a_core.asgi.application'
 
+# CHANNEL_LAYERS = {
+#     'default': {
+#         "BACKEND": "channels.layers.InMemoryChannelLayer"
+#     }
+# }
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+    },
+}
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 

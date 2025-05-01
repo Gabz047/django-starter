@@ -1,0 +1,32 @@
+[project]
+name = "django-starter"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Gabz047", email = "gabe1612mail@gmail.com"},
+]
+dependencies = [
+    "Django",
+    "pillow",
+    "django-cleanup",
+    "django-allauth",
+    "django-htmx",
+    "channels>=4.2.2",
+    "daphne>=4.1.2",
+    "channels-redis>=4.2.1",
+]
+requires-python = "==3.13.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+migrate = "python manage.py migrate"
+makemigrations = "python manage.py makemigrations"
+dev = "python manage.py runserver"
+admin = "python manage.py createsuperuser"
+removedb = "rm -rf db.sqlite3"
+startapp = "python manage.py startapp"
