@@ -21,6 +21,7 @@ dependencies = [
     "psycopg2>=2.9.10",
     "gunicorn>=23.0.0",
     "uvicorn>=0.34.2",
+    "shortuuid>=1.0.13",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"
