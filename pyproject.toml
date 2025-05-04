@@ -26,7 +26,6 @@ requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
 
-
 [tool.pdm]
 distribution = false
 
@@ -37,3 +36,4 @@ dev = "python manage.py runserver"
 admin = "python manage.py createsuperuser"
 removedb = "rm -rf db.sqlite3"
 startapp = "python manage.py startapp"
+
